@@ -9,15 +9,15 @@ iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/
 
 ### Test Empty Password
 ```
-Validate-Credentials -UserName ferrari\Senna
+Validate-Credentials -UserName ferrari\Administrator
 ```
 
 ### Test Credentials
 ```
-Validate-Credentials -UserName ferrari\Senna -Password FuerteCorre1
+Validate-Credentials -UserName ferrari\Administrator -Password P@ssw0rd!
 ```
 
 ### Test Credentials | Provide Domain and DC info
 ```
-Validate-Credentials -UserName ferrari\Senna -Password FuerteCorre1 -Domain ferrari.local -DomainController DC01.ferrari.local
+Validate-Credentials -UserName ferrari\Administrator -Password P@ssw0rd! -Domain ferrari.local -DomainController DC01.ferrari.local
 ```
