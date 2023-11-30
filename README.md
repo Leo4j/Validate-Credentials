@@ -7,17 +7,18 @@ Important: Wrong attempts will increases the Bad Pwd Count of the user you are t
 iex(new-object net.webclient).downloadstring('https://raw.githubusercontent.com/Leo4j/Validate-Credentials/main/Validate-Credentials.ps1')
 ```
 
-### Test Empty Password
-```
-Validate-Credentials -UserName ferrari\Administrator
-```
-
 ### Test Credentials
 ```
-Validate-Credentials -UserName ferrari\Administrator -Password P@ssw0rd!
+Validate-Credentials -UserName Administrator -Password P@ssw0rd!
+```
+```
+Validate-Credentials -UserName Administrator -Password P@ssw0rd! -Domain ferrari.local
 ```
 
-### Test Credentials | Provide Domain and DC info
+### Test Empty Password
 ```
-Validate-Credentials -UserName ferrari\Administrator -Password P@ssw0rd! -Domain ferrari.local -DomainController DC01.ferrari.local
+Validate-Credentials -UserName Administrator
+```
+```
+Validate-Credentials -UserName Administrator -Domain ferrari.local
 ```
