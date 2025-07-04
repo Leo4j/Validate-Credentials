@@ -3,7 +3,7 @@ function Validate-Credentials {
         [string]$UserName,
         [string]$Password,
         [string]$Domain,
-		[string]$DomainController
+        [string]$DomainController
     )
 
     if(!$Domain){
