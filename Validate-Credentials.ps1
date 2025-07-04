@@ -2,7 +2,8 @@ function Validate-Credentials {
     param(
         [string]$UserName,
         [string]$Password,
-        [string]$Domain
+        [string]$Domain,
+		[string]$DomainController
     )
 
     if(!$Domain){
@@ -11,9 +12,12 @@ function Validate-Credentials {
      	if(!$Domain){$Domain = Get-WmiObject -Namespace root\cimv2 -Class Win32_ComputerSystem | Select Domain | Format-Table -HideTableHeaders | out-string | ForEach-Object { $_.Trim() }}
     }
 
-    # Determine LDAP path based on whether a specific domain controller is provided
-    $LDAPPath = "LDAP://"
-    $LDAPPath += $Domain
+    if($DomainController){
+		$TempDomainName = "DC=" + $Domain.Split(".")
+		$domainDN = $TempDomainName -replace " ", ",DC="
+		$LDAPPath = "LDAP://$DomainController/$domainDN"
+	}
+	else{$LDAPPath = "LDAP://$Domain"}
 
     # Attempt to authenticate
     try {
